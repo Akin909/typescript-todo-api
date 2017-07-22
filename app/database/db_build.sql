@@ -9,8 +9,7 @@ CREATE TABLE todos (
   completed BOOLEAN NOT NULL
 );
 
-INSERT INTO TABLE todos(title, body, completed) VALUES (
-  ('World Domination', 'Muhaha first we will come for the fishes', false)
-);
+INSERT INTO todos (title, body, completed) VALUES
+('World Domination', 'Muhaha first we will come for the fishes', false);
 
 COMMIT;

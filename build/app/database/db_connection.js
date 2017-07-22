@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pg = require("pg-promise");
-const pgp = pg(); // No initialization config needed
-const connection = {
+var pg = require("pg-promise");
+var pgp = pg(); // No initialization config needed
+var connection = {
     host: 'localhost',
     port: 5432,
     database: 'typescript_todos',
 };
 exports.db = pgp(connection);
-//# sourceMappingURL=dbConnection.js.map
+//# sourceMappingURL=db_connection.js.map
