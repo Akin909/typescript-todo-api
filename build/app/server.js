@@ -1,4 +1,12 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -36,6 +44,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var hapi = require("hapi");
+var queries = require("./database/queries");
 function init(port) {
     if (port === void 0) { port = 4001; }
     return __awaiter(this, void 0, void 0, function () {
@@ -48,16 +57,32 @@ function init(port) {
                         port: port,
                         routes: {
                             cors: {
-                                origin: ['*']
-                            }
-                        }
+                                origin: ['*'],
+                            },
+                        },
                     });
                     server.route({
                         method: 'GET',
                         path: '/',
                         handler: function (request, reply) {
-                            reply('hello world');
-                        }
+                            var todos = queries.getAllTodos;
+                            reply(todos);
+                        },
+                    });
+                    server.route({
+                        method: 'POST',
+                        path: '/todo',
+                        handler: function (request, reply) {
+                            var newTodo = JSON.parse(request.payload);
+                            try {
+                                var id = queries.addTodo(newTodo);
+                                var todo = __assign({}, newTodo, { id: id });
+                                reply(todo);
+                            }
+                            catch (e) {
+                                reply(e);
+                            }
+                        },
                     });
                     return [4 /*yield*/, server.start(function (err) {
                             if (err) {
