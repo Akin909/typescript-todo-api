@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "rootDir": "./app",
+        "lib": [ "es2015", "es6", "dom" ],
+        "outDir": "./build/app/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "module": "commonjs",
+        "target": "es6"
+    },
+    "include": [
+        "./app/**/*"
+    ]
+}

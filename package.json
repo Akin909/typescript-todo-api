@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "concurrently 'tsc -w' 'nodemon -e js,html,css build/app/index.js'"
+  },
+  "dependencies": {
+    "@types/hapi": "^16.1.6",
+    "hapi": "^16.5.0",
+    "pg-promise": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/pg-promise": "^5.4.3"
+  }
+}
